@@ -7,9 +7,11 @@
                  [ring/ring-defaults "0.1.2"]
                  [hiccup "1.0.2"]
                  [org.clojure/java.jdbc "0.2.3"]
-                 [com.h2database/h2 "1.3.170"]]
+                 [com.h2database/h2 "1.3.170"]
+                 [ring/ring-jetty-adapter "1.4.0"]]
   :plugins [[lein-ring "0.8.13"]]
   :ring {:handler kitella.handler/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
-                        [ring-mock "0.1.5"]]}})
+                        [ring-mock "0.1.5"]]}}
+  :main kitella.handler)
