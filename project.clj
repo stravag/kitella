@@ -7,6 +7,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/java.jdbc "0.5.8"]
                  [org.postgresql/postgresql "9.4.1208.jre7"]
+                 [ragtime "0.5.2"]
                  [ring/ring-jetty-adapter "1.4.0"]
                  [compojure "1.5.0"]
                  [ring/ring-defaults "0.2.0"]
@@ -18,4 +19,6 @@
          :init    kitella.models.migration/migrate}
   :profiles {:dev     {:dependencies [[javax.servlet/servlet-api "2.5"]
                                       [ring-mock "0.1.5"]]}
-             :uberjar {:aot :all}})
+             :uberjar {:aot :all}}
+  :aliases {"migrate"  ["run" "-m" "kitella.models.migration/migrate"]
+            "rollback" ["run" "-m" "kitella.models.migration/rollback"]})

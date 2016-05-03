@@ -1,21 +1,13 @@
 (ns kitella.models.migration
-  (:require [clojure.java.jdbc :as sql]
-            [kitella.models.player :as player]))
+  (:require [ragtime.jdbc :as jdbc]
+            [ragtime.repl :as repl]))
 
-(defn migrated? []
-  (-> (sql/query player/spec
-                 [(str "select count(*) from information_schema.tables "
-                       "where table_name='players'")])
-      first :count pos?))
+(def config
+  {:datastore   (jdbc/sql-database {:connection-uri "postgresql://localhost:5432/kitella"})
+   :migrations (jdbc/load-resources "migrations")})
 
 (defn migrate []
-  (when (not (migrated?))
-    (print "Creating database structure...") (flush)
-    (sql/db-do-commands player/spec
-                        (sql/create-table-ddl
-                          :players
-                          [:id :serial "PRIMARY KEY"]
-                          [:body :varchar "NOT NULL"]
-                          [:created_at :timestamp
-                           "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]))
-    (println " done")))
+  (repl/migrate (config)))
+
+(defn rollback []
+  (repl/rollback (config)))

@@ -5,8 +5,7 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
     ;; kitella dependecies
             [kitella.controllers.players :as players]
-            [kitella.views.layout :as layout]
-            [kitella.models.migration :as schema])
+            [kitella.views.layout :as layout])
   (:gen-class))
 
 (defroutes routes
@@ -22,6 +21,5 @@
                                :join? false}))
 
 (defn -main []
-  (schema/migrate)
   (let [port (Integer. (or (System/getenv "PORT") "8080"))]
     (start port)))
