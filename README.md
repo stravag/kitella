@@ -18,7 +18,7 @@ To start a web server for the application, run:
 
 https://devcenter.heroku.com/articles/clojure-web-application
 
-### Setup DB
+## Setup DB
 
 Rather than running PostgreSQL as a system-level background
 daemon as some package managers do by default, it’s recommended
@@ -31,3 +31,7 @@ permissions issues and improve visibility:
 Then create a local PostgreSQL database for development work:
 
     $ createdb kitella
+
+### Database initialization / migration
+
+    $ lein migrate
