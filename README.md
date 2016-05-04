@@ -14,24 +14,24 @@ To start a web server for the application, run:
 
     lein ring server
 
-## License
+## Reference
 
-Copyright © 2015 FIXME
+https://devcenter.heroku.com/articles/clojure-web-application
 
-### Setup DB
+## Setup DB
 
-Run in REPL:
+Rather than running PostgreSQL as a system-level background
+daemon as some package managers do by default, it’s recommended
+for development work that you launch postgres yourself to avoid
+permissions issues and improve visibility:
 
-    (require '[clojure.java.jdbc :as sql])
-    (sql/with-connection
-      {:classname "org.h2.Driver"
-       :subprotocol "h2:file"
-       :subname "db/kitella"}
-    
-      (sql/create-table :locations
-        [:id "bigint primary key auto_increment"]
-        [:x "integer"]
-        [:y "integer"])
-    
-      (sql/insert-records :locations
-        {:x 8 :y 9}))
+    $ initdb pg
+    $ postgres -D pg
+
+Then create a local PostgreSQL database for development work:
+
+    $ createdb kitella
+
+### Database initialization / migration
+
+    $ lein migrate
