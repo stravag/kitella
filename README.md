@@ -8,17 +8,11 @@ You will need [Leiningen][] 2.0.0 or above installed.
 
 [leiningen]: https://github.com/technomancy/leiningen
 
-## Running
-
-To start a web server for the application, run:
-
-    lein ring server
-
 ## Reference
 
 https://devcenter.heroku.com/articles/clojure-web-application
 
-## Setup DB
+## Setup/Run Database
 
 Rather than running PostgreSQL as a system-level background
 daemon as some package managers do by default, it’s recommended
@@ -35,3 +29,9 @@ Then create a local PostgreSQL database for development work:
 ### Database initialization / migration
 
     $ lein migrate
+
+## Running Application
+
+To start a web server for the application, run:
+
+    $ lein ring server

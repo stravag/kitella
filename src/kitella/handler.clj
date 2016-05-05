@@ -1,9 +1,8 @@
-(ns kitella.web
+(ns kitella.handler
   (:require [compojure.core :refer [defroutes]]
             [ring.adapter.jetty :as ring]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-    ;; kitella dependecies
             [kitella.controllers.players :as players]
             [kitella.views.layout :as layout])
   (:gen-class))
