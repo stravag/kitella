@@ -6,7 +6,7 @@
 
 ;; See: http://sqlkorma.com/docs#db
 (defdb prod (postgres {:db         "kitella"
-                       :user       ""
+                       :user       "ranil"
                        :password   ""
                        :host       "localhost"
                        :port       "5432"}))
@@ -30,6 +30,6 @@
           (with events)
           (where {:events.id id})))
 
-(defn select-events
+(defn select-events []
   (select events
           (with players)))
