@@ -4,34 +4,14 @@ FIXME
 
 ## Prerequisites
 
-You will need [Leiningen][] 2.0.0 or above installed.
+Install pyhton3: https://www.python.org/downloads/
+Install django
 
-[leiningen]: https://github.com/technomancy/leiningen
+    pip3 install django 
+
 
 ## Running
 
 To start a web server for the application, run:
 
-    lein ring server
-
-## License
-
-Copyright © 2015 FIXME
-
-### Setup DB
-
-Run in REPL:
-
-    (require '[clojure.java.jdbc :as sql])
-    (sql/with-connection
-      {:classname "org.h2.Driver"
-       :subprotocol "h2:file"
-       :subname "db/kitella"}
-    
-      (sql/create-table :locations
-        [:id "bigint primary key auto_increment"]
-        [:x "integer"]
-        [:y "integer"])
-    
-      (sql/insert-records :locations
-        {:x 8 :y 9}))
+    python3 manage.py runserver 
