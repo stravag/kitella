@@ -2,7 +2,7 @@
 {% if events_list %}
 <ul>
     {% for event in events_list %}
-    <li><a href="/events/{{ event.id }}/">{{ event.name }}</a></li>
+    <li><a href="{% url 'events:event_detail' event.id %}">{{ event.name }}</a></li>
     {% endfor %}
 </ul>
 {% else %}

@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404
 
 from .models import Event, Player, Classification
 
@@ -16,10 +15,6 @@ def index(request):
 def detail(request, event_uuid):
     event = get_object_or_404(Event, pk=event_uuid)
     return render(request, 'events/detail.html', {'event': event})
-
-
-def players(request, event_uuid):
-    return HttpResponse("You're looking at players of event %s." % event_uuid)
 
 
 def player_detail(request, event_uuid, player_uuid):
