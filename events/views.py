@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-from .models import Event
+from .models import Event, Player
 
 
 # Create your views here.
@@ -23,4 +23,6 @@ def players(request, event_uuid):
 
 
 def player_detail(request, event_uuid, player_uuid):
-    return HttpResponse("You're looking at player %s in event %s." % (player_uuid, event_uuid))
+    event = get_object_or_404(Event, pk=event_uuid)
+    player = get_object_or_404(Player, pk=player_uuid)
+    return render(request, 'players/detail.html', {'event': event, 'player': player})

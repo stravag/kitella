@@ -33,4 +33,4 @@ class Classification(models.Model):
         unique_together = ('classified_player', 'classifying_player', 'event')
 
     def __str__(self):
-        return self.val
+        return self.val.__str__()
