@@ -1,7 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 
-from .models import Event, Player
+from .models import Event, Player, Classification
 
 
 # Create your views here.
@@ -25,4 +25,14 @@ def players(request, event_uuid):
 def player_detail(request, event_uuid, player_uuid):
     event = get_object_or_404(Event, pk=event_uuid)
     player = get_object_or_404(Player, pk=player_uuid)
-    return render(request, 'players/detail.html', {'event': event, 'player': player})
+
+    # there has to be a better way than this, would prefer to use player object
+    classifications = Classification.objects.filter(classified_player=player_uuid, event=event_uuid)
+
+    context = {
+        'event': event,
+        'player': player,
+        'classifications': classifications
+    }
+
+    return render(request, 'players/detail.html', context)

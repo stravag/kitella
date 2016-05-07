@@ -1,6 +1,8 @@
 <h1>{{ player.firstname }} {{ player.lastname }}</h1>
+<h2>Event: {{ event.name }}</h2>
 <p>{{ player.email }}</p>
 <ul>
-    TODO find a way to get all classifications where this player is the classified_player
-    {{ player.classified_player_set.all }}
+    {% for classification in classifications %}
+    <li>{{ classification.val }}</li>
+    {% endfor %}
 </ul>
