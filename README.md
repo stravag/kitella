@@ -19,13 +19,17 @@ Initialize Postgres
 
     initdb --username=postgres --pwprompt db
 
-Start Postgres
+Start Postgres / Query
 
     postgres -D db
 
 Create kitella database
 
     createdb --username=postgres kitella
+
+Query Database
+
+    psql --username=postgres kitella
 
 Migration
 
