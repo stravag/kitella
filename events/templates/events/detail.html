@@ -2,6 +2,6 @@
 <p>{{ event.description }}</p>
 <ul>
     {% for player in event.players.all %}
-    <li><a href="{% url 'events:player_detail' event.id player.id %}">{{ player.email }}</a></li>
+    <li><a href="{% url 'events:player' event.id player.id %}">{{ player.email }}</a></li>
     {% endfor %}
 </ul>

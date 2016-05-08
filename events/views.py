@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+
 
 from .models import Event, Player, Classification
 
@@ -10,6 +11,12 @@ def index(request):
         'events_list': events_list,
     }
     return render(request, 'events/index.html', context)
+
+
+def create(request):
+    # server side validation
+    event = Event.objects.create(name=request.POST['name'], description=request.POST['description'])
+    return redirect(event)
 
 
 def detail(request, event_uuid):

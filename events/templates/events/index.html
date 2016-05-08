@@ -1,9 +1,12 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
 <h1>Events</h1>
 {% if events_list %}
 <ul>
     {% for event in events_list %}
     <li>
-        <a href="{% url 'events:event_detail' event.id %}">{{ event.name }}</a>
+        <a href="{% url 'events:event' event.id %}">{{ event.name }}</a>
         <span>Players: {{ event.players.count }}</span>
     </li>
     {% endfor %}
@@ -11,3 +14,9 @@
 {% else %}
 <p>No events are available.</p>
 {% endif %}
+<form action="{% url 'events:create' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="name" required />
+    <input type="text" name="description" placeholder="description" />
+    <input type="submit" value="Create" />
+</form>

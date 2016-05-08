@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 class Player(models.Model):
@@ -21,6 +22,11 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return "/events/" + str(self.id)
+        # TODO fix reverse solution:
+        # return reverse('event', args=(str(self.id),))
 
 
 class Classification(models.Model):
