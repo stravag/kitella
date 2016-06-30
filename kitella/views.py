@@ -10,3 +10,8 @@ class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
+
+# TODO POST method to add classification
+# URL: /rest/events/{id}/players/{id}/classifications
+# Body { value : 1.5 }
+
